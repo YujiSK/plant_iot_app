@@ -27,6 +27,12 @@ jobs:
         run: flutter pub get
       - name: Build web
         run: flutter build web --release --base-href /plant_iot_app/
+      - name: Fix base href for GitHub Pages subpath
+        run: |
+          if [ -f build/web/index.html ]; then
+            sed -i 's|<base href="/">|<base href="/plant_iot_app/">|' build/web/index.html || true
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
