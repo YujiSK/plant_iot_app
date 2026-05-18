@@ -38,7 +38,7 @@ class PlantIoTApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
           useMaterial3: true,
           scaffoldBackgroundColor: const Color(0xFFF5F7F2),
-          cardTheme: CardTheme(
+          cardTheme: CardThemeData(
             color: Colors.white,
             elevation: 0,
             shape:
