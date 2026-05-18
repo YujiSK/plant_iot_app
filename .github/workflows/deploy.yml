@@ -7,11 +7,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
       - uses: actions/checkout@v4
+      - name: Show runner Node version
+        run: node --version || true
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: 'stable'
+      - name: Show Flutter info
+        run: |
+          flutter --version
+          flutter doctor -v || true
       - name: Install dependencies
         run: flutter pub get
       - name: Build web
